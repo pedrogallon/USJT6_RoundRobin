@@ -5,6 +5,7 @@ public class Processo {
 	private int chegada;
 	private int duracao;
 	private String nome;
+	private String status;
 
 	public Processo(int chegada, int duracao, String nome) {
 		this.chegada = chegada;
@@ -33,9 +34,11 @@ public class Processo {
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Processo [chegada=" + chegada + ", duracao=" + duracao + nome + "]";
+		return "Processo: " + nome + "	| Duração restante: " + duracao + "	| Chegada: " + chegada ;
 	}
+	
+
 }
