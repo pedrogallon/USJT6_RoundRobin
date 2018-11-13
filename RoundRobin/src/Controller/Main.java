@@ -12,7 +12,7 @@ public class Main {
 		Memoria memoria = new Memoria(new RoundRobin(5), 100);
 
 		boolean continuar = true;
-		// While para inser��o dos Processos
+		// While para inserção dos Processos
 		while (continuar) {
 			if (1 == JOptionPane.showConfirmDialog(null, "Adicionar processo?")) {
 				continuar = false;

@@ -17,8 +17,6 @@ public class RoundRobin {
 	// Pegar proximo processo da fila
 	public Processo round(Fila fila) {
 		Processo processo = fila.next();
-//		if(processo.getDuracao() > 0)
-//			fila.add(processo);
 		return processo;
 	}
 }

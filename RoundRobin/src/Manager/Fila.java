@@ -13,11 +13,6 @@ public class Fila {
 		fila = new LinkedList<>();
 	}
 	
-	public void sendToEnd(Processo processo) {
-		fila.remove();
-		fila.add(processo);
-	}
-	
 	public void add(Processo processo) {
 		fila.add(processo);
 	}

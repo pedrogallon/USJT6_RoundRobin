@@ -10,7 +10,7 @@ public class Memoria {
 
 	private final int MAX_MEMORIA; // Memoria Total
 	private int memoriaDisponivel; // Memoria Livre
-	private int time;		// Tempo de execução
+	private int time;		// Time de execução
 
 	private ArrayList<Processo> processos; // Fila auxiliar de processos inseridos
 	private ArrayList<Processo> onWaitQueue; // Fila em disco
@@ -39,35 +39,35 @@ public class Memoria {
 			getProcessoFromWaitQueue();
 			run(getProcesso());
 		}
-		notifica(" -- Fim da execução");
+		notifica(" -- End");
 	}
 
-	// Executa Processo por um tempo <= 1 quantum, verificando se processos chegaram em cada instante
+	// Executa Processo por um Time <= 1 quantum, verificando se processos chegaram em cada instante
 	private void run(Processo processo) {
 		for (int thisQuantum = 0; thisQuantum < roundRobin.getQuantum(); thisQuantum++) {
 			next();
 			processo.run();
-			notifica("Running " + processo + " 	-- Tempo: " + time + "	| Memória Livre: " + memoriaDisponivel);
+			notifica("Running " + processo + " 	-- Time: " + time + "	| Free Space: " + memoriaDisponivel);
 			// Final do Processo
 			if (processo.getDuracao() == 0) {
-				notifica(" -- End 	" + processo + " 	-- Tempo: " + time);
+				notifica(" -- End 	" + processo + " 	-- Time: " + time);
 				return;
 			}
 		}
 
-		// Add de volta pois o tempo não é 0;
+		// Add de volta pois o Time não é 0;
 		fila.add(processo);
 
 	}
 
-	// Aumenta tempo, aumenta memória livre (1 ms foi processado) e verifica se há processos que chegaram neste Time
+	// Aumenta Time, aumenta memória livre (1 ms foi processado) e verifica se há processos que chegaram neste Time
 	private void next() {
 		aumentarMemoriaDisponivel();
 		time++;
 		for (int i = 0; i < processos.size(); i++) {
 			Processo processo = processos.get(0);
 			if (processo.getChegada() == time) {
-				notifica("- Add " + processo + " 	-- Tempo: " + time);
+				notifica("- Add " + processo + " 	-- Time: " + time);
 				put(processo);
 				processos.remove(0);
 			} else {
@@ -107,7 +107,7 @@ public class Memoria {
 			
 			// Se possuir memoria, envia para fila
 			if (memoriaDisponivel >= processo.getDuracao()) {
-				notifica(" -- Switched Processo "+processo.getNome()+" to Memory ");
+				notifica(" -- Switched Process "+processo.getNome()+" to Memory ");
 				onWaitQueue.remove(0);
 				fila.add(processo);
 				memoriaDisponivel -= processo.getDuracao();
