@@ -1,11 +1,10 @@
 package Model;
 
-public class Processo {
+public class Processo implements Comparable<Processo> {
 	
 	private int chegada;
 	private int duracao;
 	private String nome;
-	private String status;
 
 	public Processo(int chegada, int duracao, String nome) {
 		this.chegada = chegada;
@@ -39,6 +38,13 @@ public class Processo {
 	public String toString() {
 		return "Processo: " + nome + "	| Duração restante: " + duracao + "	| Chegada: " + chegada ;
 	}
-	
 
+	@Override
+	public int compareTo(Processo outroProcesso) {
+		return this.getChegada() <= outroProcesso.getChegada() ? 1 : 0;
+	}
+
+	public void run() {
+		setDuracao(getDuracao() -1);
+	}
 }
