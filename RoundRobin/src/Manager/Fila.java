@@ -7,17 +7,30 @@ import Model.Processo;
 
 public class Fila {
 	
-	private Queue<Processo> round;
+	private Queue<Processo> fila;
 	
 	public Fila() {
-		round = new LinkedList<>();
+		fila = new LinkedList<>();
+	}
+	
+	public void sendToEnd(Processo processo) {
+		fila.remove();
+		fila.add(processo);
 	}
 	
 	public void add(Processo processo) {
-		round.add(processo);
+		fila.add(processo);
 	}
 	
 	public Processo next() {
-		return round.remove();
+		return fila.remove();
+	}
+	
+	public int size() {
+		return fila.size();
+	}
+	
+	public void remove(Processo processo) {
+		fila.remove(processo);
 	}
 }

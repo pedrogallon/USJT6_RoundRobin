@@ -14,10 +14,11 @@ public class RoundRobin {
 		return quantum;
 	}
 	
+	// Pegar proximo processo da fila
 	public Processo round(Fila fila) {
 		Processo processo = fila.next();
-		if(processo.getDuracao() > 0)
-			fila.add(processo);
+//		if(processo.getDuracao() > 0)
+//			fila.add(processo);
 		return processo;
 	}
 }
