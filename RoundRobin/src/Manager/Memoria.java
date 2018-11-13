@@ -35,11 +35,15 @@ public class Memoria {
 		sortProcessos();
 		next();
 		// Processa enquanto existir Processos na fila da memória
-		while (fila.size() > 0) {
-			getProcessoFromWaitQueue();
-			run(getProcesso());
+		while (processos.size()>0) {
+			if (fila.size()>0) {
+				getProcessoFromWaitQueue();
+				run(getProcesso());
+			}else {
+				next();
+				notifica(" -- No Process Available 	-- Time: " + time);
+			}
 		}
-		notifica(" -- End");
 	}
 
 	// Executa Processo por um Time <= 1 quantum, verificando se processos chegaram em cada instante
@@ -67,7 +71,7 @@ public class Memoria {
 		for (int i = 0; i < processos.size(); i++) {
 			Processo processo = processos.get(0);
 			if (processo.getChegada() == time) {
-				notifica("- Add " + processo + " 	-- Time: " + time);
+				notifica("- Add " + processo + " 	-- Time: " + time + "	| Free Space: " + memoriaDisponivel);
 				put(processo);
 				processos.remove(0);
 			} else {
