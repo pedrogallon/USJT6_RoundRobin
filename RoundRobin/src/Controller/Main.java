@@ -26,9 +26,9 @@ public class Main {
 			}
 		}
 
-		memoria.add(new Processo(0, 5, "A"));
-		memoria.add(new Processo(10, 20, "B"));
-		memoria.add(new Processo(50, 10, "C"));
+//		memoria.add(new Processo(0, 5, "A"));
+//		memoria.add(new Processo(10, 20, "B"));
+//		memoria.add(new Processo(50, 10, "C"));
 //		memoria.add(new Processo(3, 20, "D"));
 //		memoria.add(new Processo(6, 15, "E"));
 //		memoria.add(new Processo(4, 13, "F"));
